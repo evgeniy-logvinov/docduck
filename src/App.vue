@@ -1,15 +1,19 @@
 <template>
-    <div id="app"><Header /></div>
+  <div id="app">
+    <v-app id="inspire">
+      <router-view></router-view>
+    </v-app>
+  </div>
 </template>
 
-<script>
-import Header from '@/components/Header';
-export default {
-    name: 'app',
-    components: {
-        Header,
-    },
-};
-</script>
+<script lang="ts">
+import Vue from 'vue';
 
-<style lang="sass"></style>
+export default Vue.extend({
+  name: 'App',
+
+  data: () => ({
+    drawer: null,
+  }),
+});
+</script>

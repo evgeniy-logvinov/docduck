@@ -119,6 +119,21 @@ export default class Home extends Vue {
             text: 'Пример 4',
             to: '/applications/test4',
           },
+          {
+            icon: 'done_all',
+            text: 'Questions',
+            to: '/applications/questions',
+          },
+          {
+            icon: 'done_all',
+            text: 'Simptoms',
+            to: '/applications/simptoms',
+          },
+          {
+            icon: 'done_all',
+            text: 'Reasons',
+            to: '/applications/reasons',
+          },
         ],
       },
     ];

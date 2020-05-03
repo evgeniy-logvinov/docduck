@@ -3,9 +3,20 @@
       "state": "STEP2",
       "reason": "HEADACHE",
       "question": "Как часто вы...",
-      "buttons": [{
+      "buttons": [
+         {
             "id": "YES",
             "name": "Да",
+            "description": "Описание варианта симптома" 
+         },
+         {
+            "id": "NO",
+            "name": "Net",
+            "description": "Описание варианта симптома" 
+         },
+         {
+            "id": "y",
+            "name": "sad",
             "description": "Описание варианта симптома" 
          }
        ]

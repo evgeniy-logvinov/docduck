@@ -2,7 +2,10 @@
   <div class="applications">
     Новые опросы/Заявки
     <v-form ref="form" v-model="valid" lazy-validation>
-      <v-text-field v-model="name" :counter="10" :rules="nameRules" label="Name" required></v-text-field>
+      <v-text-field v-model="name" :counter="10" :rules="nameRules"
+      label="Name" required>
+
+      </v-text-field>
 
       <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
 
@@ -32,29 +35,29 @@
 
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class ApplicationsNew extends Vue {
   private valid = true;
 
-  private name = "";
+  private name = '';
 
   private nameRules: any[] = [
-    (v: any) => !!v || "Name is required",
-    (v: any) => (v && v.length <= 10) || "Name must be less than 10 characters"
+    (v: any) => !!v || 'Name is required',
+    (v: any) => (v && v.length <= 10) || 'Name must be less than 10 characters',
   ];
 
-  private email = "";
+  private email = '';
 
   private emailRules: any[] = [
-    (v: any) => !!v || "E-mail is required",
-    (v: any) => /.+@.+\..+/.test(v) || "E-mail must be valid"
+    (v: any) => !!v || 'E-mail is required',
+    (v: any) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
   ];
 
   private select: any = null;
 
-  private items: any[] = ["Item 1", "Item 2", "Item 3", "Item 4"];
+  private items: any[] = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
 
   private checkbox = false;
 

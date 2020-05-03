@@ -25,6 +25,26 @@ const routes: Array<RouteConfig> = [
             name: 'ApplicationsAll',
             component: () => import(/* webpackChunkName: "applicationsAll" */ '@/views/ApplicationsAll.vue'),
           },
+          {
+            path: 'test',
+            name: 'ApplicationsTest',
+            component: () => import(/* webpackChunkName: "applicationsTest" */ '@/views/ApplicationsTest.vue'),
+          },
+          {
+            path: 'test2',
+            name: 'ApplicationsTest2',
+            component: () => import(/* webpackChunkName: "applicationsTest2" */ '@/views/ApplicationsTest2.vue'),
+          },
+          {
+            path: 'test3',
+            name: 'ApplicationsTest3',
+            component: () => import(/* webpackChunkName: "applicationsTest3" */ '@/views/ApplicationsTest3.vue'),
+          },
+          {
+            path: 'test4',
+            name: 'ApplicationsTest4',
+            component: () => import(/* webpackChunkName: "applicationsTest4" */ '@/views/ApplicationsTest4.vue'),
+          },
         ],
       },
     ],

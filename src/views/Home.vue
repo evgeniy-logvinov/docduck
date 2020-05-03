@@ -54,7 +54,7 @@
         <v-toolbar-title>DocDuck</v-toolbar-title>
         <v-spacer />
         <v-toolbar-title>
-          <v-btn large @click="signOut">Выход</v-btn>
+          <v-btn outlined color="orange lighten-3" @click="signOut">Выход</v-btn>
         </v-toolbar-title>
       </v-app-bar>
 
@@ -98,6 +98,26 @@ export default class Home extends Vue {
             icon: 'done_all',
             text: 'Созданные',
             to: '/applications/all',
+          },
+          {
+            icon: 'done_all',
+            text: 'Пример 1',
+            to: '/applications/test',
+          },
+          {
+            icon: 'done_all',
+            text: 'Пример 2',
+            to: '/applications/test2',
+          },
+          {
+            icon: 'done_all',
+            text: 'Пример 3',
+            to: '/applications/test3',
+          },
+          {
+            icon: 'done_all',
+            text: 'Пример 4',
+            to: '/applications/test4',
           },
         ],
       },

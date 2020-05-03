@@ -55,7 +55,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import axios, { AxiosResponse } from 'axios';
 
-const url = './db.json';
+const url = 'http://localhost:3001/db.json';
 @Component
 export default class ApplicationsTest2 extends Vue {
   private valid = true;

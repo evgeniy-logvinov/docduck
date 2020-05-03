@@ -55,7 +55,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import axios, { AxiosResponse } from 'axios';
 
-const url = 'http://localhost:3001/db.json';
+const url = 'http://localhost:3001/data';
 @Component
 export default class ApplicationsTest2 extends Vue {
   private valid = true;
@@ -64,9 +64,10 @@ export default class ApplicationsTest2 extends Vue {
 
   mounted() {
     axios.get(url)
-      .then((response: AxiosResponse) => {
-        this.dataObj = response.data;
-        console.log(this.dataObj);
+      .then((response: AxiosResponse) => response.data)
+      .then((data) => {
+        console.log(data);
+        this.dataObj = data;
       });
   }
 }

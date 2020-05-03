@@ -1,11 +1,13 @@
 {
-    "state": "STEP2",
-    "reason": "HEADACHE",
-    "question": "Как часто вы...",
-    "buttons": [{
-          "id": "YES",
-          "name": "Да",
-          "description": "Описание варианта симптома" 
-       }
-    ]
- }
+   "data":{ 
+      "state": "STEP2",
+      "reason": "HEADACHE",
+      "question": "Как часто вы...",
+      "buttons": [{
+            "id": "YES",
+            "name": "Да",
+            "description": "Описание варианта симптома" 
+         }
+       ]
+   }
+}

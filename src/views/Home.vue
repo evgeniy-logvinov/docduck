@@ -62,7 +62,7 @@
         <router-view></router-view>
       </v-content>
       <v-footer color="indigo" app>
-        <span class="white--text">&copy; 2019</span>
+        <span class="white--text">&copy; 2020</span>
       </v-footer>
   </div>
 </template>
@@ -86,7 +86,7 @@ export default class Home extends Vue {
       { icon: 'account_box', text: 'Анкета пользователя' },
       {
         icon: 'mdi-ballot',
-        text: 'Завяки',
+        text: 'Заявки',
         model: true,
         children: [
           {

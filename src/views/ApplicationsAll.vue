@@ -1,6 +1,6 @@
 <template>
   <div class="applications">
-    Все опросы/Заявкм
+    Все опросы/Заявки
     <v-data-table
       :headers="headers"
       :items="desserts"

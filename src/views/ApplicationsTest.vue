@@ -53,41 +53,21 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import axios, { AxiosResponse } from 'axios';
 
+const url = './db.json';
 @Component
 export default class ApplicationsTest2 extends Vue {
   private valid = true;
 
-  private name = '';
+  private dataObj: Record<string, any> | null = null;
 
-  private nameRules: any[] = [
-    (v: any) => !!v || 'Name is required',
-    (v: any) => (v && v.length <= 10) || 'Name must be less than 10 characters',
-  ];
-
-  private email = '';
-
-  private emailRules: any[] = [
-    (v: any) => !!v || 'E-mail is required',
-    (v: any) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-  ];
-
-  private select: any = null;
-
-  private items: any[] = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
-
-  private checkbox = false;
-
-  private validate() {
-    (this.$refs.form as any).validate();
-  }
-
-  private reset() {
-    (this.$refs.form as any).reset();
-  }
-
-  private resetValidation() {
-    (this.$refs.form as any).resetValidation();
+  mounted() {
+    axios.get(url)
+      .then((response: AxiosResponse) => {
+        this.dataObj = response.data;
+        console.log(this.dataObj);
+      });
   }
 }
 </script>

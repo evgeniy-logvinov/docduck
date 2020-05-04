@@ -44,7 +44,7 @@
         <v-col cols="9">
           <v-row>
             <v-col>
-              <v-btn block color="blue darken-1" @click="enter">
+              <v-btn block color="blue darken-1" to="/applications/quiz">
                 Войти
               </v-btn>
             </v-col>
@@ -94,6 +94,9 @@ export default class ApplicationsNew extends Vue {
   private validate() {
     (this.$refs.form as any).validate();
   }
+
+  // private enter(obj) {
+  // }
 
   private reset() {
     this.name = '';

@@ -90,19 +90,9 @@ export default class Home extends Vue {
         model: true,
         children: [
           {
-            icon: 'create',
-            text: 'Новая',
-            to: '/applications/new',
-          },
-          {
             icon: 'done_all',
             text: 'Созданные',
             to: '/applications/all',
-          },
-          {
-            icon: 'done_all',
-            text: 'Пример 1',
-            to: '/applications/test',
           },
           {
             icon: 'done_all',
@@ -126,6 +116,7 @@ export default class Home extends Vue {
           },
         ],
       },
+      { icon: '', text: 'Sign in', to: '/application/registration' },
     ];
   }
 }

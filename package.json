@@ -7,8 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "server": "json-server -p3001 --watch db.json",
-    "start": "yarn server && yarn serve"
+    "server": "json-server -p3001 --watch db.json"
   },
   "dependencies": {
     "axios": "^0.19.2",

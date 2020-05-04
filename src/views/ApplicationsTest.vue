@@ -21,7 +21,7 @@
           :key="button"
         >
           <v-col cols="12" class="d-flex align-center justify-end">
-            <v-btn color="primary" class="md-6" @click="reset">
+            <v-btn color="primary" class="md-6" @click="next">
               {{ button.name }}
             </v-btn>
           </v-col>

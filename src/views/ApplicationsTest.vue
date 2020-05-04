@@ -11,15 +11,22 @@
           <v-col cols="12" class="d-flex pa-6 align-center justify-space-between">
             <p
               class="text-left body-1"
-            >Твоя голова и шея большую часть времени наклонена? например вперед при работе за ноутом</p>
+            >
+            {{ dataObj.question }}
+            </p>
           </v-col>
         </v-row>
-        <v-row>
+        <v-row
+          v-for="button in dataObj.buttons"
+          :key="button"
+        >
           <v-col cols="12" class="d-flex align-center justify-end">
-            <v-btn color="primary" class="mr-4" @click="reset">Да</v-btn>
+            <v-btn color="primary" class="md-6" @click="next">
+              {{ button.name }}
+            </v-btn>
           </v-col>
         </v-row>
-        <v-row>
+        <!-- <v-row>
           <v-col cols="12" class="d-flex align-center justify-end">
             <v-btn color="error" class="mr-4" @click="reset">Нет</v-btn>
           </v-col>
@@ -28,7 +35,7 @@
           <v-col cols="12" class="d-flex align-center justify-end">
             <v-btn click="resetValidation" class="mr-4">Я не знаю</v-btn>
           </v-col>
-        </v-row>
+        </v-row> -->
         <v-row>
           <v-col cols="12" class="d-flex align-center justify-end">
             <v-btn text small class="mr-4" @click="resetValidation">Дать обратную связь</v-btn>

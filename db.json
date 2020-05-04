@@ -1,24 +1,95 @@
 {
-   "data":{ 
-      "state": "STEP2",
-      "reason": "HEADACHE",
-      "question": "Как часто вы...",
-      "buttons": [
-         {
-            "id": "YES",
-            "name": "Да",
-            "description": "Описание варианта симптома" 
-         },
-         {
-            "id": "NO",
-            "name": "Net",
-            "description": "Описание варианта симптома" 
-         },
-         {
-            "id": "y",
-            "name": "sad",
-            "description": "Описание варианта симптома" 
-         }
-       ]
-   }
+  "data": {
+    "state": "STEP2",
+    "reason": "HEADACHE",
+    "question": "Как часто вы...",
+    "buttons": [
+      {
+        "id": "YES",
+        "name": "Да",
+        "description": "Описание варианта симптома"
+      }
+    ]
+  },
+  "question": {
+    "state": "STEP2",
+    "reason": "HEADACHE",
+    "isFinal": false,
+    "question": "Как долго это беспокоит тебя?",
+    "buttons": [
+      {
+        "id": "LESS_THEN_ONE_DAY",
+        "name": "Меньше дня"
+      },
+      {
+        "id": "DAY_WEEK",
+        "name": "От дня до недели"
+      },
+      {
+        "id": "WEEK_MONTH",
+        "name": "От недели до месяца"
+      },
+      {
+        "id": "MORE_THAN_YEAR",
+        "name": "Больше года"
+      }
+    ]
+  },
+  "question2": {
+    "state": "STEP3",
+    "isFinal": true,
+    "reason": "HEADACHE",
+    "question": "Как долго это беспокоит тебя?",
+    "buttons": [
+      {
+        "id": "LESS_THEN_ONE_DAY",
+        "name": "AAAAAAAAAAAAAAAAAAAAAAa"
+      },
+      {
+        "id": "DAY_WEEK",
+        "name": "От дня до недели"
+      },
+      {
+        "id": "WEEK_MONTH",
+        "name": "От недели до месяца"
+      },
+      {
+        "id": "MORE_THAN_YEAR",
+        "name": "Больше года"
+      }
+    ]
+  },
+  "reasons": [
+    {
+      "id": "HEADACHE",
+      "name": "Головная боль"
+    },
+    {
+      "id": "TEST",
+      "name": "ЧТОТО еще болит из списка"
+    }
+  ],
+  "simptom": [
+    {
+      "id": "SINUS_PAIN",
+      "name": "Боль в пазухе",
+      "description": "Описание варианта симптома"
+    },
+    {
+      "id": "RUNNY_NOSE",
+      "name": "Насморк",
+      "description": "Насморк бла бла бла"
+    },
+    {
+      "id": "AAAAA",
+      "name": "ФФФФФФФ",
+      "description": "фывфывфывфывфывфывфвы"
+    }
+  ],
+  "summary": {
+    "description": "У тебя походу рак мозга, но тебе нужно сходить к врачу сначала. Не паникуй.",
+    "possibleCauses": ["Может ветрянка", "Может диарея"],
+    "present": ["Боль в шее", "Боль с задней стороны шеи"],
+    "absent": ["Курильщик", "Боль в руках"]
+  }
 }

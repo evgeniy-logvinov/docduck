@@ -109,6 +109,21 @@ export default class Home extends Vue {
             text: 'Вопросы',
             to: '/applications/quizStart',
           },
+          {
+            icon: 'done_all',
+            text: 'Questions',
+            to: '/applications/questions',
+          },
+          {
+            icon: 'done_all',
+            text: 'Simptoms',
+            to: '/applications/simptoms',
+          },
+          {
+            icon: 'done_all',
+            text: 'Reasons',
+            to: '/applications/reasons',
+          },
         ],
       },
     ];

@@ -45,6 +45,26 @@ const routes: Array<RouteConfig> = [
             name: 'QuizStart3',
             component: () => import(/* webpackChunkName: "quizStart3" */ '@/views/QuizStart3.vue'),
           },
+          {
+            path: 'questions',
+            name: 'Questions',
+            component: () => import(/* webpackChunkName: "questions" */ '@/views/ApplicationsQuestions.vue'),
+          },
+          {
+            path: 'simptoms',
+            name: 'Simptoms',
+            component: () => import(/* webpackChunkName: "simptoms" */ '@/views/ApplicationsSimptoms.vue'),
+          },
+          {
+            path: 'summary',
+            name: 'Summary',
+            component: () => import(/* webpackChunkName: "summary" */ '@/views/ApplicationsSummary.vue'),
+          },
+          {
+            path: 'reasons',
+            name: 'Reasons',
+            component: () => import(/* webpackChunkName: "reasons" */ '@/views/ApplicationsReasons.vue'),
+          },
         ],
       },
     ],

@@ -1,20 +1,155 @@
 <template>
   <div class="applications">
     <v-form>
-      <v-container class="spacing-playground" fluid v-if="summary">
+      <v-container class="spacing-playground" fluid>
         <v-card class="px-4">
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
-              <div class="text-left title">Данные пациента</div>
+              <div class="text-left title">{{reason.name}}</div>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
-              <div class="text-left subtitle-1">Саммари</div>
+              <div class="text-left subtitle-1">Данные пациента</div>
             </v-col>
           </v-row>
-          <v-divider></v-divider>
-          <v-expansion-panels focusable>
+          <v-row>
+            <v-col cols="12" class="d-flex align-center justify-space-between">
+              <div class="text-left title">Итог</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="d-flex align-center justify-space-between">
+              <div
+                class="text-left subtitle-1"
+              >Людям с подобными симптомами не требуется срочная медицинская помощь.</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="d-flex align-center justify-space-between">
+              <div class="text-left subtitle-2">Возможные причины</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="d-flex align-center justify-end">
+              <v-card class="px-4">
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div class="text-left body-1">Остеохондроз шейного отдела позвоночника</div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div class="text-left body-2">получите консультацию доктора</div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div
+                      class="text-left caption"
+                    >У 6 из 10 людей с такими же симптомами наблюдается это</div>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+            <v-col cols="12" class="d-flex align-center justify-end">
+              <v-card class="px-4">
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div class="text-left body-1">Остеохондроз шейного отдела позвоночника</div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div class="text-left body-2">получите консультацию доктора</div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div
+                      class="text-left caption"
+                    >У 6 из 10 людей с такими же симптомами наблюдается это</div>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="d-flex align-center justify-space-between">
+              <div class="text-left subtitle-2">Менее вероятные причины</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="d-flex align-center justify-end">
+              <v-card class="px-4">
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div class="text-left body-1">Мышечная боль в шее</div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div
+                      class="text-left caption"
+                    >У 6 из 10 людей с такими же симптомами наблюдается это</div>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+            <v-col cols="12" class="d-flex align-center justify-end">
+              <v-card class="px-4">
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div class="text-left body-1">Остеохондроз шейного отдела позвоночника</div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div class="text-left body-2">получите консультацию доктора</div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div
+                      class="text-left caption"
+                    >У 6 из 10 людей с такими же симптомами наблюдается это</div>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="d-flex align-center justify-space-between">
+              <div class="text-left subtitle-1">Симптомы</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="d-flex align-center justify-space-between">
+              <div class="text-left subtitle-2">Текущие</div>
+            </v-col>
+            <v-col
+              cols="12"
+              v-for="answer in yesAnswers"
+              :key="answer.question.question"
+              class="d-flex align-center py-1"
+            >
+              <div class="text-left body-2">- {{answer.question.question}}</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="d-flex align-center justify-space-between">
+              <div class="text-left subtitle-2">Отсутсвует</div>
+            </v-col>
+            <v-col
+              cols="12"
+              v-for="answer in yesAnswers"
+              :key="answer.question.question"
+              class="d-flex align-center py-1"
+            >
+              <div class="text-left body-2">- {{answer.question.question}}</div>
+            </v-col>
+          </v-row>
+          <!-- <v-expansion-panels focusable>
             <v-expansion-panel>
               <v-expansion-panel-header>
                 Подробное описание причин
@@ -43,10 +178,6 @@
                 </v-card>
               </v-expansion-panel-content>
             </v-expansion-panel>
-            <!-- <v-expansion-panel>
-              <v-expansion-panel-header>Менее вероятные причины</v-expansion-panel-header>
-              <v-expansion-panel-content>{{summary.possibleCauses}}</v-expansion-panel-content>
-            </v-expansion-panel>-->
             <v-expansion-panel>
               <v-expansion-panel-header>Список выбранных симптомов</v-expansion-panel-header>
               <v-expansion-panel-content>
@@ -79,7 +210,7 @@
                 </v-card>
               </v-expansion-panel-content>
             </v-expansion-panel>
-          </v-expansion-panels>
+          </v-expansion-panels>-->
           <v-divider></v-divider>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-start">
@@ -101,17 +232,28 @@
 import { Component, Vue, ProvideReactive } from 'vue-property-decorator';
 
 @Component
-export default class ApplicationsSimptoms extends Vue {
+export default class ApplicationsSummary extends Vue {
   private async created() {
     try {
-      await this.$store.dispatch('getSummary');
+      // await this.$store.dispatch('getSummary');
     } catch (err) {
       alert(err);
     }
   }
 
-  get summary() {
-    return this.$store.state.summary;
+  // get summary() {
+  //   return this.$store.state.summary;
+  // }
+  get reason() {
+    return this.$store.state.reason;
+  }
+
+  get yesAnswers() {
+    return this.$store.state.resultYes;
+  }
+
+  get noAnswers() {
+    return this.$store.state.resultNo;
   }
 }
 </script>

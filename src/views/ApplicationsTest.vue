@@ -62,7 +62,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import axios, { AxiosResponse } from 'axios';
 
-const url = 'http://localhost:3001/data';
+const url = 'http://localhost:8086/';
 @Component
 export default class ApplicationsTest2 extends Vue {
   private valid = true;
@@ -73,7 +73,6 @@ export default class ApplicationsTest2 extends Vue {
     axios.get(url)
       .then((response: AxiosResponse) => response.data)
       .then((data) => {
-        console.log(data);
         this.dataObj = data;
       });
   }

@@ -20,22 +20,6 @@
               <v-btn color="primary" outlined block @click="selectReason(button)">{{button.name}}</v-btn>
             </v-col>
           </v-row>
-          <!-- <v-autocomplete
-                v-model="reasonId"
-                :items="searchItems"
-                :search-input.sync="search"
-                color="white"
-                hide-no-data
-                hide-selected
-                item-text="name"
-                item-value="id"
-                label="Public APIs"
-                placeholder="Start typing to Search"
-                prepend-icon="mdi-database-search"
-                return-object
-          ></v-autocomplete>-->
-          <!-- </v-col>
-          </v-row>-->
           <v-divider></v-divider>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-start">
@@ -54,34 +38,10 @@
 </template>
 
 <script lang="ts">
-import {
-  Component, Vue, Watch, ProvideReactive,
-} from 'vue-property-decorator';
+import { Component, Vue, ProvideReactive } from 'vue-property-decorator';
 
 @Component
 export default class ApplicationsReason extends Vue {
-  // @Watch('search')
-  // private onSearch(val: string) {
-  // Items have already been loaded
-  // if (this.reasons.length > 0) return;
-
-  // // Items have already been requested
-  // if (this.isLoading) return;
-
-  // this.isLoading = true;
-  // // Lazily load input items
-  // fetch('https://api.publicapis.org/entries')
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     const { count, entries } = res;
-  //     this.count = count;
-  //     this.entries = entries;
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   })
-  //   .finally(() => (this.isLoading = false));
-  // }
   private search = '';
 
   private reasonId = '';
@@ -90,7 +50,7 @@ export default class ApplicationsReason extends Vue {
     try {
       await this.$store.dispatch('getReasons');
     } catch (err) {
-      alert(err);
+      console.log(err);
     }
   }
 

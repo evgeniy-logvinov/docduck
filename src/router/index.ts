@@ -16,11 +16,6 @@ const routes: Array<RouteConfig> = [
         component: () => import(/* webpackChunkName: "applications" */ '@/views/Applications.vue'),
         children: [
           {
-            path: 'all',
-            name: 'ApplicationsAll',
-            component: () => import(/* webpackChunkName: "applicationsAll" */ '@/views/ApplicationsAll.vue'),
-          },
-          {
             path: 'test',
             name: 'ApplicationsTest',
             component: () => import(/* webpackChunkName: "applicationsTest" */ '@/views/ApplicationsTest.vue'),
@@ -65,7 +60,22 @@ const routes: Array<RouteConfig> = [
             name: 'RegistrationQuiz',
             component: () => import(/* webpackChunkName: "registrationQuiz" */ '@/views/RegistrationQuiz.vue'),
           },
+          {
+            path: 'final',
+            name: 'Final',
+            component: () => import(/* webpackChunkName: "final" */ '@/views/ApplicationsFinal.vue'),
+          },
+          {
+            path: 'warning',
+            name: 'Warning',
+            component: () => import(/* webpackChunkName: "warning" */ '@/views/ApplicationsFinalWarning.vue'),
+          },
         ],
+      },
+      {
+        path: '*',
+        name: 'Page404',
+        component: () => import(/* webpackChunkName: "public" */ '@/views/Page404.vue'),
       },
     ],
   },
@@ -81,25 +91,5 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
-
-// router.beforeEach((to, from, next) => {
-//   console.log(from);
-//   console.log(to);
-//   if (to.matched.some((record) => !record.meta.isPublic)) {
-//     const loggedIn = localStorage.getItem('user');
-//     if (!loggedIn) {
-//       console.log('loggedout')
-//       store.commit('security/SIGNOUT');
-//       next({
-//         path: '/signin',
-//         query: { redirect: to.fullPath },
-//       });
-//     } else {
-//       next();
-//     }
-//   } else {
-//     next();
-//   }
-// });
 
 export default router;

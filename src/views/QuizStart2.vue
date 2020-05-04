@@ -1,6 +1,6 @@
 <template>
   <div class="applications">
-    <v-form ref="form" v-model="valid" lazy-validation>
+    <v-form ref="form">
       <v-container class="spacing-playground" fluid>
         <v-card class="px-4">
           <v-row>
@@ -14,19 +14,18 @@
           </v-row>
           <v-row class="md-9" justify="center">
             <v-col cols="9" md="auto" class="d-flex align-center justify-start">
-              <v-btn color="primary" outlined block @click="start" to="/applications/quizStart3">Для меня</v-btn>
+              <v-btn color="primary" outlined block to="reasons">Для меня</v-btn>
             </v-col>
           </v-row>
           <v-row class="md-9" justify="center">
             <v-col cols="9" md="auto" class="d-flex align-center justify-start">
-              <v-btn color="primary" outlined block @click="start" to="/applications/quizStart3">Для другого</v-btn>
+              <v-btn color="primary" outlined block to="reasons">Для другого</v-btn>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-start">
               <v-img
                 src="@/assets/logo.jpg"
-                :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`"
                 aspect-ratio="1"
                 class="grey lighten-2"
                 max-width="100px"

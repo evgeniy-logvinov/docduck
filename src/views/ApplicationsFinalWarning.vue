@@ -4,30 +4,22 @@
     <!-- <v-breadcrumbs :items="items"></v-breadcrumbs> -->
     <v-form>
       <v-container class="spacing-playground" fluid>
-        <v-card class="px-4" v-if="question">
+        <v-card class="px-4">
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
-              <p class="text-left body-1">{{question.question}}</p>
+              <p class="text-left body-1">
+                Не забывай, что это не медицинский диагноз.
+                Лучше обратиться к врачу, если ситуация станет хуже.
+                В некоторых случаях мы можем посоветовать доп. обследования.
+              </p>
             </v-col>
           </v-row>
           <v-row>
-            <v-col
-              v-for="button in question.buttons"
-              :key="button.id"
-              cols="12"
-              class="d-flex align-center justify-center text-wrap"
-            >
-              <v-btn color="primary" outlined block @click="sendAction(button)">{{button.name}}</v-btn>
+            <v-col cols="12" class="d-flex align-center justify-center text-wrap">
+              <v-btn color="primary" outlined block to="summary">Открыть отчет</v-btn>
             </v-col>
           </v-row>
           <v-divider></v-divider>
-          <v-row>
-            <v-col cols="12" class="d-flex align-center justify-end">
-              <v-btn text small class="mr-4" to="/about">
-                <v-icon left>feedback</v-icon>Дать обратную связь
-              </v-btn>
-            </v-col>
-          </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-start">
               <v-img
@@ -48,7 +40,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class ApplicationsQuestions extends Vue {
+export default class ApplicationsFinalWarning extends Vue {
   get items(): any[] {
     return [
       {
@@ -61,11 +53,11 @@ export default class ApplicationsQuestions extends Vue {
 
   private async sendAction(button: any) {
     try {
-      await this.$store.dispatch('setSelectedAction', button);
+      await this.$store.dispatch('setSelectedAction', button.id);
       if (!this.question.isFinal) {
         await this.reloadData();
       } else {
-        this.$router.push('final');
+        this.$router.push('summary');
       }
     } catch (err) {
       alert(err);

@@ -30,7 +30,7 @@
                 </v-list-item-icon>
               </v-list-item>
             </v-list-group>
-            <v-list-item v-else :key="item.text" link>
+            <v-list-item v-else :key="item.text" link :to="item.to">
               <v-list-item-action>
                 <v-icon>{{ item.icon }}</v-icon>
               </v-list-item-action>
@@ -84,6 +84,7 @@ export default class Home extends Vue {
   get items() {
     return [
       { icon: 'account_box', text: 'Анкета пользователя' },
+      { icon: 'account_box', text: 'Начало', to: '/applications/quizStart' },
       {
         icon: 'mdi-ballot',
         text: 'Заявки',
@@ -114,9 +115,19 @@ export default class Home extends Vue {
             text: 'Reasons',
             to: '/applications/reasons',
           },
+          {
+            icon: 'done_all',
+            text: 'Final',
+            to: '/applications/final',
+          },
+          {
+            icon: 'done_all',
+            text: 'Warning',
+            to: '/applications/warning',
+          },
         ],
       },
-      { icon: '', text: 'Sign in', to: '/application/registration' },
+      { icon: '', text: 'Sign in', to: '/applications/registration' },
     ];
   }
 }

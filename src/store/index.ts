@@ -6,18 +6,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    reason: {
-      id: 'HEADACHE',
-      name: 'Головная боль',
-    },
-    reasons: [{
-      id: 'HEADACHE',
-      name: 'Головная боль',
-    },
-    {
-      id: 'RUNY_NOSE',
-      name: 'Насморк',
-    }],
+    reason: null,
+    reasons: [],
     simptoms: [],
     simptom: null,
     question: null as any,
@@ -25,6 +15,8 @@ export default new Vuex.Store({
     selections: [] as any[],
     questions: [],
     summary: null,
+    resultYes: [] as any[],
+    resultNo: [] as any[],
   },
   mutations: {
     SET_REASONS(state, reasons) {
@@ -46,8 +38,12 @@ export default new Vuex.Store({
       state.selectAction = action;
     },
     SET_SELECTIONS(state, action) {
-      console.log('test', { [state?.question?.state]: action });
-      state.selections.push({ [state?.question?.state]: action });
+      state.selections.push({ [state?.question?.nextState]: action.id });
+      if (action.id === 'DO_NOT_KNOW' || action.id === 'NO') {
+        state.resultNo.push(action);
+      } else {
+        state.resultYes.push({ action, question: state.question });
+      }
     },
     SET_SUMMARY(state, summary) {
       state.summary = summary;
@@ -69,11 +65,12 @@ export default new Vuex.Store({
       commit('SET_SIMPTOM', simptom);
     },
     async getQuestion({ commit, state }: any): Promise<void> {
-      const question = await ApiApplications.getQuestion(state?.question?.state, state.reason.id, state.selectAction);
+      const question = await ApiApplications
+        .getQuestion((state.question && state.question.nextState) || null, state.reason.id, state.selectAction);
       commit('SET_QUESTION', question.data);
     },
     async setSelectedAction({ commit }: any, selectedAction): Promise<void> {
-      commit('SET_SELECTED_ACTION', selectedAction);
+      commit('SET_SELECTED_ACTION', selectedAction.id);
       commit('SET_SELECTIONS', selectedAction);
     },
     async getSummary({ commit, state }: any): Promise<void> {

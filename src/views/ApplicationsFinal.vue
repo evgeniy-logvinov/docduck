@@ -1,14 +1,12 @@
 <template>
   <div class="applications">
-    <!-- TODO: Добавить -->
-    <!-- <v-breadcrumbs :items="items"></v-breadcrumbs> -->
     <v-form>
       <v-container class="spacing-playground" fluid>
         <v-card class="px-4">
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
               <p class="text-left body-1">
-                Спасибо {{user.name}}, готово.
+                Спасибо {{user && user.name}}, готово.
                 Я подготовлю отчет с возможными причинами и рекомендациями
               </p>
             </v-col>

@@ -75,6 +75,7 @@ export default new Vuex.Store({
     async getQuestion({ commit, state }: any): Promise<void> {
       const question = await ApiApplications
         .getQuestion((state.question && state.question.nextState) || null, state.reason.id, state.selectAction);
+      console.log(question);
       commit('SET_QUESTION', question.data);
     },
     async setSelectedAction({ commit }: any, selectedAction): Promise<void> {

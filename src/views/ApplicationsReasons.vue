@@ -11,13 +11,26 @@
             </v-col>
           </v-row>
           <v-row v-if="reasons">
-            <v-col
-              v-for="button in reasons"
-              :key="button.id"
-              cols="12"
-              class="d-flex align-center justify-center text-wrap"
-            >
-              <v-btn color="primary" outlined block @click="selectReason(button)">{{button.name}}</v-btn>
+            <v-col cols="12" class="d-flex align-center justify-center text-wrap">
+              <v-autocomplete
+                v-model="reasonId"
+                :items="reasons"
+                :filter="customFilter"
+                color="white"
+                item-text="name"
+                item-value="id"
+              ></v-autocomplete>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" class="d-flex align-center justify-center text-wrap">
+              <v-btn
+                color="primary"
+                :disabled="!reasonId"
+                outlined
+                block
+                @click="selectReason()"
+              >Продолжить</v-btn>
             </v-col>
           </v-row>
           <v-divider></v-divider>
@@ -54,9 +67,17 @@ export default class ApplicationsReason extends Vue {
     }
   }
 
-  private async selectReason(reason: any) {
+  private async selectReason() {
+    const reason = this.reasons.find((el: any) => el.id === this.reasonId);
     await this.$store.dispatch('setReason', reason);
     this.$router.push('simptoms');
+  }
+
+  private customFilter(item: any, queryText: any, itemText: any) {
+    const textOne = item.name.toLowerCase();
+    const searchText = queryText.toLowerCase();
+
+    return textOne.indexOf(searchText) > -1;
   }
 
   get searchItems() {

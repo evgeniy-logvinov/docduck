@@ -1,23 +1,17 @@
 <template>
-  <v-form v-model="valid">
+  <v-form>
     <v-container>
       <v-row>
         <v-col cols="12" md="4">
-          <v-text-field v-model="name" :rules="nameRules" :counter="3" label="Ваше имя" required></v-text-field>
+          <v-text-field v-model="name" :counter="50" label="Ваше имя" required></v-text-field>
         </v-col>
 
         <v-col cols="12" md="4">
-          <v-select
-            v-model="sex"
-            :items="sexRules"
-            :rules="[v => !!v || 'Пол обязателен']"
-            label="Пол"
-            required
-          ></v-select>
+          <v-select v-model="sex" :items="sexRules" label="Пол" required></v-select>
         </v-col>
 
         <v-col cols="12" md="4">
-          <v-text-field v-model="phone" label="Phone" required></v-text-field>
+          <v-text-field v-model="phone" :counter="15" label="Phone" required></v-text-field>
         </v-col>
       </v-row>
       <v-row justify="center" align="center">
@@ -48,24 +42,11 @@ export default class ApplicationsNew extends Vue {
 
   private name = '';
 
-  private nameRules: any[] = [
-    (v: any) => !!v || 'Имя обязательно',
-    (v: any) => (v && v.length >= 3) || 'Имя должо быть больше 3-х букв',
-  ];
-
   private phone = '';
-
-  private phoneRules: any[] = [
-    (v: any) => !!v || 'Телефон обязательно',
-  ];
 
   private sex = null;
 
   private sexRules: any[] = ['Мужской', 'Женский'];
-
-  private validate() {
-    (this.$refs.form as any).validate();
-  }
 
   private async entry() {
     await this.$store.dispatch('setUser', {
@@ -75,9 +56,6 @@ export default class ApplicationsNew extends Vue {
     });
     this.$router.push('/applications/quiz');
   }
-
-  // private enter(obj) {
-  // }
 
   private reset() {
     this.name = '';

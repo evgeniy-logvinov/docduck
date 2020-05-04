@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-// import store from '@/store';
 
 Vue.use(VueRouter);
 
@@ -8,10 +7,11 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Home',
+    redirect: '/applications/entry',
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     children: [
       {
-        path: '/applications',
+        path: 'applications',
         name: 'Applications',
         component: () => import(/* webpackChunkName: "applications" */ '@/views/Applications.vue'),
         children: [
@@ -70,19 +70,19 @@ const routes: Array<RouteConfig> = [
             name: 'Warning',
             component: () => import(/* webpackChunkName: "warning" */ '@/views/ApplicationsFinalWarning.vue'),
           },
+          {
+            path: 'entry',
+            name: 'Entry',
+            component: () => import(/* webpackChunkName: "entry" */ '@/views/ApplicationEntry.vue'),
+          },
         ],
-      },
-      {
-        path: '*',
-        name: 'Page404',
-        component: () => import(/* webpackChunkName: "public" */ '@/views/Page404.vue'),
       },
     ],
   },
   {
-    path: '/entry',
-    name: 'Entry',
-    component: () => import(/* webpackChunkName: "entry" */ '@/views/ApplicationEntry.vue'),
+    path: '*',
+    name: 'Page404',
+    component: () => import(/* webpackChunkName: "public" */ '@/views/Page404.vue'),
   },
 ];
 

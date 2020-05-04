@@ -1,7 +1,7 @@
 <template>
   <div class="applications">
     <v-form>
-      <v-container class="spacing-playground" fluid v-if="reason">
+      <v-container class="spacing-playground" fluid v-if="reason && summary">
         <v-card class="px-4">
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
@@ -17,13 +17,10 @@
             <v-col cols="12" class="d-flex align-center justify-space-between">
               <div class="text-left title">Итог</div>
             </v-col>
-            {{summary}}
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
-              <div
-                class="text-left subtitle-1"
-              >{{summary.description}}</div>
+              <div class="text-left subtitle-1">{{summary.description}}</div>
             </v-col>
           </v-row>
           <v-row>
@@ -32,7 +29,12 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="12" class="d-flex align-center justify-end" v-for="(possible, index) in summary.possibleCauses" :key="index">
+            <v-col
+              cols="12"
+              class="d-flex align-center justify-end"
+              v-for="(possible, index) in summary.possibleCauses"
+              :key="index"
+            >
               <v-card class="px-4">
                 <v-row>
                   <v-col cols="12" class="d-flex align-center justify-space-between">
@@ -46,34 +48,11 @@
                 </v-row>
                 <v-row>
                   <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div
-                      class="text-left caption"
-                    >{{possible.statistics}}</div>
+                    <div class="text-left caption">{{possible.statistics}}</div>
                   </v-col>
                 </v-row>
               </v-card>
             </v-col>
-            <!-- <v-col cols="12" class="d-flex align-center justify-end">
-              <v-card class="px-4">
-                <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div class="text-left body-1">Остеохондроз шейного отдела позвоночника</div>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div class="text-left body-2">получите консультацию доктора</div>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div
-                      class="text-left caption"
-                    >У 6 из 10 людей с такими же симптомами наблюдается это</div>
-                  </v-col>
-                </v-row>
-              </v-card>
-            </v-col> -->
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
@@ -81,7 +60,12 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="12" class="d-flex align-center justify-end"  v-for="(lessLikelyCause, index) in summary.lessLikelyCauses" :key="index">
+            <v-col
+              cols="12"
+              class="d-flex align-center justify-end"
+              v-for="(lessLikelyCause, index) in summary.lessLikelyCauses"
+              :key="index"
+            >
               <v-card class="px-4">
                 <v-row>
                   <v-col cols="12" class="d-flex align-center justify-space-between">
@@ -95,30 +79,7 @@
                 </v-row>
                 <v-row>
                   <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div
-                      class="text-left caption"
-                    >{{lessLikelyCause.statistics}}</div>
-                  </v-col>
-                </v-row>
-              </v-card>
-            </v-col>
-            <v-col cols="12" class="d-flex align-center justify-end">
-              <v-card class="px-4">
-                <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div class="text-left body-1">Остеохондроз шейного отдела позвоночника</div>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div class="text-left body-2">получите консультацию доктора</div>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div
-                      class="text-left caption"
-                    >У 6 из 10 людей с такими же симптомами наблюдается это</div>
+                    <div class="text-left caption">{{lessLikelyCause.statistics}}</div>
                   </v-col>
                 </v-row>
               </v-card>
@@ -139,7 +100,7 @@
               :key="index"
               class="d-flex align-center py-1"
             >
-              <div class="text-left body-2">- {{answer.question && answer.question.question}}</div>
+              <div class="text-left body-2">- {{answer.question && answer.question.shortName}}</div>
             </v-col>
           </v-row>
           <v-row>
@@ -152,13 +113,13 @@
               :key="index"
               class="d-flex align-center py-1"
             >
-              <div class="text-left body-2">- {{answer.question && answer.question.question}}</div>
+              <div class="text-left body-2">- {{answer.question && answer.question.shortName}}</div>
             </v-col>
           </v-row>
           <v-divider></v-divider>
           <v-row>
             <v-col>
-              <v-btn color="primary" outlined block to="quizStart">Продолжить</v-btn>
+              <v-btn color="primary" outlined block to="quizStart">Закончить</v-btn>
             </v-col>
           </v-row>
           <v-row>
@@ -178,7 +139,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, ProvideReactive } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class ApplicationsSummary extends Vue {
@@ -193,6 +154,7 @@ export default class ApplicationsSummary extends Vue {
   get summary() {
     return this.$store.state.summary;
   }
+
   get reason() {
     return this.$store.state.reason;
   }

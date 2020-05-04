@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    user: null,
     reason: null,
     reasons: [],
     simptoms: [],
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     resultNo: [] as any[],
   },
   mutations: {
+    SET_USER(state, user) {
+      state.user = user;
+    },
     SET_REASONS(state, reasons) {
       state.reasons = reasons;
     },
@@ -76,6 +80,10 @@ export default new Vuex.Store({
     async getSummary({ commit, state }: any): Promise<void> {
       const summary = await ApiApplications.postSummary(state.reason.id, state.selections);
       commit('SET_SUMMARY', summary.data);
+    },
+    async setUser({ commit, state }: any, user: any): Promise<void> {
+      console.log('user', user);
+      commit('SET_USER', user);
     },
   },
   modules: {

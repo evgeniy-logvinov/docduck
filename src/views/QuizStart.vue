@@ -5,10 +5,9 @@
         <v-card class="px-4">
           <v-row>
             <v-col cols="12" class="d-flex pa-6 align-center justify-space-between">
-              <p
-                class="text-left body-1"
-              >
-              Привет, Имя! Я помогу тебе разобраться с тем, как я работаю. Давай начнем с того, что тебя беспокоит
+              <p class="text-left body-1">
+                Привет, {{user && user.name}}!
+                Я помогу тебе разобраться с тем, как я работаю. Давай начнем с того, что тебя беспокоит
               </p>
             </v-col>
           </v-row>
@@ -39,5 +38,8 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class QuizStart extends Vue {
+  get user() {
+    return this.$store.state.user;
+  }
 }
 </script>

@@ -16,11 +16,6 @@ const routes: Array<RouteConfig> = [
         component: () => import(/* webpackChunkName: "applications" */ '@/views/Applications.vue'),
         children: [
           {
-            path: 'test',
-            name: 'ApplicationsTest',
-            component: () => import(/* webpackChunkName: "applicationsTest" */ '@/views/ApplicationsTest.vue'),
-          },
-          {
             path: 'quizstart',
             name: 'QuizStart',
             component: () => import(/* webpackChunkName: "quizStart" */ '@/views/QuizStart.vue'),
@@ -76,6 +71,11 @@ const routes: Array<RouteConfig> = [
             component: () => import(/* webpackChunkName: "entry" */ '@/views/ApplicationEntry.vue'),
           },
         ],
+      },
+      {
+        path: 'about',
+        name: 'About',
+        component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
       },
     ],
   },

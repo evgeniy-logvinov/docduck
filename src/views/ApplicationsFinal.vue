@@ -38,55 +38,6 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class ApplicationsFinal extends Vue {
-  get items(): any[] {
-    return [
-      {
-        text: this.reason.name,
-        disabled: true,
-        // href: 'breadcrumbs_dashboard',
-      },
-    ];
-  }
-
-  private async sendAction(button: any) {
-    try {
-      await this.$store.dispatch('setSelectedAction', button.id);
-      if (!this.question.isFinal) {
-        await this.reloadData();
-      } else {
-        this.$router.push('summary');
-      }
-    } catch (err) {
-      alert(err);
-    }
-  }
-
-  private async reloadData() {
-    try {
-      await this.$store.dispatch('getQuestion');
-    } catch (err) {
-      alert(err);
-    }
-  }
-
-  private async created() {
-    this.reloadData();
-  }
-  // private feedbackLink() {
-  // }
-
-  get question() {
-    return this.$store.state.question;
-  }
-
-  get simptom() {
-    return this.$store.state.simptom;
-  }
-
-  get reason() {
-    return this.$store.state.reason;
-  }
-
   get user() {
     return this.$store.state.user;
   }

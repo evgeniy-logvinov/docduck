@@ -1,7 +1,5 @@
 <template>
   <div class="applications">
-    <!-- TODO: Добавить -->
-    <!-- <v-breadcrumbs :items="items"></v-breadcrumbs> -->
     <v-form>
       <v-container class="spacing-playground" fluid>
         <v-card class="px-4" v-if="question">
@@ -49,16 +47,6 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class ApplicationsQuestions extends Vue {
-  get items(): any[] {
-    return [
-      {
-        text: this.reason.name,
-        disabled: true,
-        // href: 'breadcrumbs_dashboard',
-      },
-    ];
-  }
-
   private async sendAction(button: any) {
     try {
       await this.$store.dispatch('setSelectedAction', button);
@@ -83,19 +71,9 @@ export default class ApplicationsQuestions extends Vue {
   private async created() {
     this.reloadData();
   }
-  // private feedbackLink() {
-  // }
 
   get question() {
     return this.$store.state.question;
-  }
-
-  get simptom() {
-    return this.$store.state.simptom;
-  }
-
-  get reason() {
-    return this.$store.state.reason;
   }
 }
 </script>

@@ -31,19 +31,14 @@ const routes: Array<RouteConfig> = [
             component: () => import(/* webpackChunkName: "applicationsTest" */ '@/views/ApplicationsTest.vue'),
           },
           {
-            path: 'quizStart1',
-            name: 'QuizStart1',
-            component: () => import(/* webpackChunkName: "quizStart1" */ '@/views/QuizStart1.vue'),
+            path: 'quizstart',
+            name: 'QuizStart',
+            component: () => import(/* webpackChunkName: "quizStart" */ '@/views/QuizStart.vue'),
           },
           {
             path: 'quizStart2',
             name: 'QuizStart2',
             component: () => import(/* webpackChunkName: "quizStart2" */ '@/views/QuizStart2.vue'),
-          },
-          {
-            path: 'quizStart3',
-            name: 'QuizStart3',
-            component: () => import(/* webpackChunkName: "quizStart3" */ '@/views/QuizStart3.vue'),
           },
           {
             path: 'questions',
@@ -68,6 +63,11 @@ const routes: Array<RouteConfig> = [
         ],
       },
     ],
+  },
+  {
+    path: '/entry',
+    name: 'Entry',
+    component: () => import(/* webpackChunkName: "entry" */ '@/views/ApplicationEntry.vue'),
   },
 ];
 

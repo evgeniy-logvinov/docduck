@@ -1,36 +1,65 @@
 <template>
-  <div class="applications">
-    Новые опросы/Заявки
-    <v-form ref="form" v-model="valid" lazy-validation>
-      <v-text-field v-model="name" :counter="10" :rules="nameRules"
-      label="Name" required>
+  <v-form v-model="valid">
+    <v-container>
+      <v-row>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="name"
+            :rules="nameRules"
+            :counter="3"
+            label="Ваше имя"
+            required
+          ></v-text-field>
+        </v-col>
 
-      </v-text-field>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="password"
+            :rules="passwordRules"
+            :counter="4"
+            label="Пароль"
+            required
+          ></v-text-field>
+        </v-col>
 
-      <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
-
-      <v-select
-        v-model="select"
-        :items="items"
-        :rules="[v => !!v || 'Item is required']"
-        label="Item"
-        required
-      ></v-select>
-
-      <v-checkbox
-        v-model="checkbox"
-        :rules="[v => !!v || 'You must agree to continue!']"
-        label="Do you agree?"
-        required
-      ></v-checkbox>
-
-      <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">Validate</v-btn>
-
-      <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
-
-      <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
-    </v-form>
-  </div>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="email"
+            :rules="emailRules"
+            label="E-mail"
+            required
+          ></v-text-field>
+        </v-col>
+      </v-row>
+      <v-row justify="center" align="center">
+        <v-col cols="9">
+          <v-row>
+            <v-col>
+              <v-btn block color="blue darken-1" @click="enter">
+                Войти
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-btn block color="warning" @click="reset">
+                Сбросить
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-form>
 </template>
 
 
@@ -44,33 +73,32 @@ export default class ApplicationsNew extends Vue {
   private name = '';
 
   private nameRules: any[] = [
-    (v: any) => !!v || 'Name is required',
-    (v: any) => (v && v.length <= 10) || 'Name must be less than 10 characters',
+    (v: any) => !!v || 'Имя обязательно',
+    (v: any) => (v && v.length >= 3) || 'Имя должо быть больше 3-х букв',
   ];
 
   private email = '';
 
   private emailRules: any[] = [
-    (v: any) => !!v || 'E-mail is required',
-    (v: any) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+    (v: any) => !!v || 'E-mail обязательно',
+    (v: any) => /.+@.+\..+/.test(v) || 'E-mail должен быть настоящим',
   ];
 
-  private select: any = null;
+  private password = '';
 
-  private items: any[] = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
-
-  private checkbox = false;
+  private passwordRules: any[] = [
+    (v: any) => !!v || 'Пароль обязательно',
+    (v: any) => v.length > 4 || 'Пароль слишком маленький',
+  ]
 
   private validate() {
     (this.$refs.form as any).validate();
   }
 
   private reset() {
-    (this.$refs.form as any).reset();
-  }
-
-  private resetValidation() {
-    (this.$refs.form as any).resetValidation();
+    this.name = '';
+    this.email = '';
+    this.password = '';
   }
 }
 </script>

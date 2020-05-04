@@ -14,7 +14,9 @@
           </v-row>
           <v-row class="md-9" justify="center">
             <v-col cols="9" md="auto" class="d-flex align-center justify-start">
-              <v-btn color="primary" outlined block @click="start">Начать оценку симптомов</v-btn>
+              <v-btn color="primary" outlined block @click="start" to="/applications/quizStart2">
+              Начать оценку симптомов
+              </v-btn>
             </v-col>
           </v-row>
           <v-row>

@@ -17,6 +17,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'max-len': ['error', { code: 120 }],
     'operator-linebreak': 'off',
+    'linebreak-style': ["error", "windows"]
     // 'max-len': 120,
   },
   overrides: [

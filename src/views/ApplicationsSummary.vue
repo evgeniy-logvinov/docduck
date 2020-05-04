@@ -10,19 +10,20 @@
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
-              <div class="text-left subtitle-1">Данные пациента</div>
+              <div class="text-left subtitle-1">{{user.name}}</div>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
               <div class="text-left title">Итог</div>
             </v-col>
+            {{summary}}
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
               <div
                 class="text-left subtitle-1"
-              >Людям с подобными симптомами не требуется срочная медицинская помощь.</div>
+              >{{summary.description}}</div>
             </v-col>
           </v-row>
           <v-row>
@@ -31,7 +32,28 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="12" class="d-flex align-center justify-end">
+            <v-col cols="12" class="d-flex align-center justify-end" v-for="(possible, index) in summary.possibleCauses" :key="index">
+              <v-card class="px-4">
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div class="text-left body-1">{{possible.name}}</div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div class="text-left body-2">{{possible.advice}}</div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div
+                      class="text-left caption"
+                    >{{possible.statistics}}</div>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+            <!-- <v-col cols="12" class="d-flex align-center justify-end">
               <v-card class="px-4">
                 <v-row>
                   <v-col cols="12" class="d-flex align-center justify-space-between">
@@ -51,28 +73,7 @@
                   </v-col>
                 </v-row>
               </v-card>
-            </v-col>
-            <v-col cols="12" class="d-flex align-center justify-end">
-              <v-card class="px-4">
-                <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div class="text-left body-1">Остеохондроз шейного отдела позвоночника</div>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div class="text-left body-2">получите консультацию доктора</div>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div
-                      class="text-left caption"
-                    >У 6 из 10 людей с такими же симптомами наблюдается это</div>
-                  </v-col>
-                </v-row>
-              </v-card>
-            </v-col>
+            </v-col> -->
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
@@ -80,18 +81,23 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="12" class="d-flex align-center justify-end">
+            <v-col cols="12" class="d-flex align-center justify-end"  v-for="(lessLikelyCause, index) in summary.lessLikelyCauses" :key="index">
               <v-card class="px-4">
                 <v-row>
                   <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div class="text-left body-1">Мышечная боль в шее</div>
+                    <div class="text-left body-1">{{lessLikelyCause.name}}</div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div class="text-left body-2">{{lessLikelyCause.advice}}</div>
                   </v-col>
                 </v-row>
                 <v-row>
                   <v-col cols="12" class="d-flex align-center justify-space-between">
                     <div
                       class="text-left caption"
-                    >У 6 из 10 людей с такими же симптомами наблюдается это</div>
+                    >{{lessLikelyCause.statistics}}</div>
                   </v-col>
                 </v-row>
               </v-card>
@@ -178,17 +184,21 @@ import { Component, Vue, ProvideReactive } from 'vue-property-decorator';
 export default class ApplicationsSummary extends Vue {
   private async created() {
     try {
-      // await this.$store.dispatch('getSummary');
+      await this.$store.dispatch('getSummary');
     } catch (err) {
       alert(err);
     }
   }
 
-  // get summary() {
-  //   return this.$store.state.summary;
-  // }
+  get summary() {
+    return this.$store.state.summary;
+  }
   get reason() {
     return this.$store.state.reason;
+  }
+
+  get user() {
+    return this.$store.state.user;
   }
 
   get yesAnswers() {

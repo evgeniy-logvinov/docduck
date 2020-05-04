@@ -42,7 +42,11 @@ export default new Vuex.Store({
       state.selectAction = action;
     },
     SET_SELECTIONS(state, action) {
-      state.selections.push({ [state?.question?.nextState]: action.id });
+      console.log(action);
+      console.log({ [state?.question?.nextState]: action.id });
+      state.selections = { ...state.selections, ...{ [state?.question?.nextState]: action.id } };
+      console.log(state.selections);
+      // state.selections.push({ [state?.question?.nextState]: action.id });
       if (action.id === 'DO_NOT_KNOW' || action.id === 'NO') {
         state.resultNo.push(action);
       } else {
@@ -78,6 +82,7 @@ export default new Vuex.Store({
       commit('SET_SELECTIONS', selectedAction);
     },
     async getSummary({ commit, state }: any): Promise<void> {
+      // const send = state.selections.reduce()
       const summary = await ApiApplications.postSummary(state.reason.id, state.selections);
       commit('SET_SUMMARY', summary.data);
     },

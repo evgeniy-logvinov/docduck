@@ -8,7 +8,7 @@
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
               <p class="text-left body-1">
-                Спасибо Имя, готово.
+                Спасибо {{user.name}}, готово.
                 Я подготовлю отчет с возможными причинами и рекомендациями
               </p>
             </v-col>
@@ -87,6 +87,10 @@ export default class ApplicationsFinal extends Vue {
 
   get reason() {
     return this.$store.state.reason;
+  }
+
+  get user() {
+    return this.$store.state.user;
   }
 }
 </script>

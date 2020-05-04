@@ -19,13 +19,13 @@
           cols="12"
           md="4"
         >
-          <v-text-field
-            v-model="password"
-            :rules="passwordRules"
-            :counter="4"
-            label="Пароль"
+          <v-select
+            v-model="sex"
+            :items="sexRules"
+            :rules="[v => !!v || 'Пол обязателен']"
+            label="Пол"
             required
-          ></v-text-field>
+          ></v-select>
         </v-col>
 
         <v-col
@@ -84,11 +84,11 @@ export default class ApplicationsNew extends Vue {
     (v: any) => /.+@.+\..+/.test(v) || 'E-mail должен быть настоящим',
   ];
 
-  private password = '';
+  private sex = null;
 
-  private passwordRules: any[] = [
-    (v: any) => !!v || 'Пароль обязательно',
-    (v: any) => v.length > 4 || 'Пароль слишком маленький',
+  private sexRules: any[] = [
+    'Мужской',
+    'Женский',
   ]
 
   private validate() {
@@ -98,7 +98,7 @@ export default class ApplicationsNew extends Vue {
   private reset() {
     this.name = '';
     this.email = '';
-    this.password = '';
+    this.sex = null;
   }
 }
 </script>

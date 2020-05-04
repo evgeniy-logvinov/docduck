@@ -8,18 +8,18 @@
               <p
                 class="text-left body-1"
               >
-              Хорошо, для кого будем оценивать?
+              Хорошо, кого будем оценивать?
               </p>
             </v-col>
           </v-row>
           <v-row class="md-9" justify="center">
             <v-col cols="9" md="auto" class="d-flex align-center justify-start">
-              <v-btn color="primary" outlined block to="reasons">Для меня</v-btn>
+              <v-btn color="primary" outlined block to="reasons">Меня</v-btn>
             </v-col>
           </v-row>
           <v-row class="md-9" justify="center">
             <v-col cols="9" md="auto" class="d-flex align-center justify-start">
-              <v-btn color="primary" outlined block to="reasons">Для другого</v-btn>
+              <v-btn color="primary" outlined block to="reasons">Другого</v-btn>
             </v-col>
           </v-row>
           <v-row>

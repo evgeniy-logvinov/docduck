@@ -5,30 +5,36 @@
         <v-card class="px-4">
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
-              <div class="text-left title">{{reason.name}}</div>
+              <div class="text-left display-1">{{reason.name}}</div>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
-              <div class="text-left subtitle-1">{{user.name}}</div>
+              <div class="text-left title">{{user.name}}</div>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
-              <div class="text-left title">Итог</div>
+              <v-card class="px-4">
+                <v-row>
+                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                    <div class="text-left title">Итог</div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" class="pt-0">
+                    <div class="text-left subtitle-1">{{summary.description}}</div>
+                  </v-col>
+                </v-row>
+              </v-card>
             </v-col>
           </v-row>
-          <v-row>
-            <v-col cols="12" class="d-flex align-center justify-space-between">
-              <div class="text-left subtitle-1">{{summary.description}}</div>
-            </v-col>
-          </v-row>
-          <v-row>
+          <v-row v-if="summary.possibleCauses.length">
             <v-col cols="12" class="d-flex align-center justify-space-between">
               <div class="text-left subtitle-2">Возможные причины</div>
             </v-col>
           </v-row>
-          <v-row>
+          <v-row v-if="summary.possibleCauses.length">
             <v-col
               cols="12"
               class="d-flex align-center justify-end"
@@ -38,11 +44,11 @@
               <v-card class="px-4">
                 <v-row>
                   <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div class="text-left body-1">{{possible.name}}</div>
+                    <div class="text-left title">{{possible.name}}</div>
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                  <v-col cols="12" class="py-0">
                     <div class="text-left body-2">{{possible.advice}}</div>
                   </v-col>
                 </v-row>
@@ -68,17 +74,17 @@
             >
               <v-card class="px-4">
                 <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
-                    <div class="text-left body-1">{{lessLikelyCause.name}}</div>
+                  <v-col cols="12" class="">
+                    <div class="text-left title">{{lessLikelyCause.name}}</div>
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                  <v-col cols="12" class="py-0">
                     <div class="text-left body-2">{{lessLikelyCause.advice}}</div>
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col cols="12" class="d-flex align-center justify-space-between">
+                  <v-col cols="12" class="">
                     <div class="text-left caption">{{lessLikelyCause.statistics}}</div>
                   </v-col>
                 </v-row>
@@ -87,12 +93,12 @@
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
-              <div class="text-left subtitle-1">Симптомы</div>
+              <div class="text-left title">Симптомы</div>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
-              <div class="text-left subtitle-2">Текущие</div>
+              <div class="text-left subtitle-1">Текущие</div>
             </v-col>
             <v-col
               cols="12"
@@ -105,7 +111,7 @@
           </v-row>
           <v-row>
             <v-col cols="12" class="d-flex align-center justify-space-between">
-              <div class="text-left subtitle-2">Отсутсвует</div>
+              <div class="text-left subtitle-1">Отсутсвует</div>
             </v-col>
             <v-col
               cols="12"
@@ -119,7 +125,7 @@
           <v-divider></v-divider>
           <v-row>
             <v-col>
-              <v-btn color="primary" outlined block to="quizStart">Закончить</v-btn>
+              <v-btn color="primary" outlined block to="quizStart">Завершить</v-btn>
             </v-col>
           </v-row>
           <v-row>
